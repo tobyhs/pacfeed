@@ -5,6 +5,11 @@ class Package(object):
     """Metadata on a Pacman package."""
 
     def __init__(self, name, version):
+        """
+        Args:
+            name: package name
+            version: package version (including release number) (e.g. "1.2-3")
+        """
         self.name = name
         self.version = version
 
@@ -36,7 +41,11 @@ class LocalPackageSet(object):
     def get(self, package_name):
         """Get metadata on the package with the given name.
 
-        This returns a Package object if the package is installed, or None if
-        the package is not installed.
+        Args:
+            package_name: name of package to retrieve metadata for
+
+        Returns:
+            A Package object if the package is installed, or None if the
+            package is not installed.
         """
         return self.packages.get(package_name)
