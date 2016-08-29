@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Arch Linux: Recent package updates (x86_64)</title>
+    <link>https://www.archlinux.org/packages/</link>
+    <description>Recently updated packages in the Arch Linux package repositories for the 'x86_64' architecture (including 'any' packages).</description>
+    <atom:link href="https://www.archlinux.org/feeds/packages/x86_64/" rel="self"></atom:link>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Aug 2016 22:47:20 +0000</lastBuildDate>
+    <item><title>libreoffice-fresh 5.2.0-4 x86_64</title><link>https://www.archlinux.org/packages/extra/x86_64/libreoffice-fresh/</link><description>LibreOffice branch which contains new features and program enhancements</description><pubDate>Sun, 28 Aug 2016 19:56:03 +0000</pubDate><guid isPermaLink="false">tag:www.archlinux.org,2016-08-28:/packages/extra/x86_64/libreoffice-fresh/201608281956</guid><category>Extra</category><category>x86_64</category></item>
+    <item><title>gawk 4.1.4-1 x86_64</title><link>https://www.archlinux.org/packages/testing/x86_64/gawk/</link><description>GNU version of awk</description><pubDate>Sun, 28 Aug 2016 19:03:27 +0000</pubDate><guid isPermaLink="false">tag:www.archlinux.org,2016-08-28:/packages/testing/x86_64/gawk/201608281903</guid><category>Testing</category><category>x86_64</category></item>
+    <item><title>man-db 2.7.5-4 x86_64</title><link>https://www.archlinux.org/packages/core/x86_64/man-db/</link><description>A utility for reading man pages</description><pubDate>Sun, 28 Aug 2016 01:57:45 +0000</pubDate><guid isPermaLink="false">tag:www.archlinux.org,2016-08-28:/packages/core/x86_64/man-db/201608280157</guid><category>Core</category><category>x86_64</category></item>
+  </channel>
+</rss>
