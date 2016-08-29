@@ -4,7 +4,7 @@ Pacfeed is a script that prints recently updated Arch Linux packages. Installed
 packages that are up to date are in green, installed packages that are out of
 date are in red, and packages that are not installed are in white.
 
-Example output:
+Example output (without colors):
 ```
 $ pacfeed
 python-gtkspellcheck          4.0.4-1        Mon, 29 Aug 2016 07:00:19 +0000
