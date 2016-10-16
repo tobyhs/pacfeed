@@ -19,12 +19,20 @@ class TestHandler(object):
         self.packages.append((package, pub_date))
 
 
+class GetReposTest(unittest.TestCase):
+    def test_get_repos(self):
+        repos = feed.get_repos(path.dirname(__file__) + '/fixtures/pacman.conf')
+        self.assertEqual(repos, ('Core', 'Extra'))
+
+
 class ParseTest(unittest.TestCase):
     def test_parse(self):
         handler = TestHandler()
         fake_response = open(path.dirname(__file__) + '/fixtures/rss.xml')
 
-        with mock.patch('pacfeed.feed.urllib.request.urlopen') as open_patch:
+        with mock.patch('pacfeed.feed.urllib.request.urlopen') as open_patch,\
+                mock.patch('pacfeed.feed.get_repos') as get_repos_patch:
+            get_repos_patch.return_value = ('Core', 'Extra')
             open_patch.return_value = fake_response
             feed.parse(handler)
             open_patch.assert_called_once_with(feed.FEED_URL)

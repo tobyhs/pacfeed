@@ -1,3 +1,4 @@
+import configparser
 import platform
 import sys
 import urllib.request
@@ -7,9 +8,26 @@ from pacfeed import pacman
 
 
 FEED_URL = 'https://www.archlinux.org/feeds/packages/%s/' % platform.machine()
-# TODO: derive this from /etc/pacman.conf
-REPOS = ('Core', 'Extra', 'Community')
 
+ALL_REPOSITORIES = (
+    'Core', 'Extra', 'Testing',
+    'Community', 'Community-Testing',
+    'Multilib', 'Multilib-Testing',
+)
+
+
+def get_repos(config_path='/etc/pacman.conf'):
+    """Reads the Pacman configuration file to get the official repos enabled.
+
+    Args:
+        config_path: path to Pacman configuration file
+    Returns:
+        a tuple of repository names
+    """
+    config = configparser.ConfigParser(allow_no_value=True)
+    config.read(config_path)
+    sections = config.sections()
+    return tuple(r for r in ALL_REPOSITORIES if r.lower() in sections)
 
 def parse(handler):
     """Download packages feed and pass packages to the given handler.
@@ -17,11 +35,12 @@ def parse(handler):
     Args:
         handler: object to handle each package and pub_date
     """
+    repos = get_repos()
     with urllib.request.urlopen(FEED_URL) as response:
         rss = xml.etree.ElementTree.parse(response)
 
     for item in rss.iter('item'):
-        if item.find('category').text in REPOS:
+        if item.find('category').text in repos:
             name, version = item.find('title').text.split()[0:2]
             package = pacman.Package(name, version)
             pub_date = item.find('pubDate').text
