@@ -51,6 +51,10 @@ class OutputHandler(object):
     """Class to print packages."""
 
     def __init__(self, output=sys.stdout):
+        """
+        Args:
+            output: object with a write method to write output to
+        """
         self.output = output
         self.local_package_set = pacman.LocalPackageSet()
 
