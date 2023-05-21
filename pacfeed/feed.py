@@ -9,12 +9,6 @@ from pacfeed import pacman
 
 FEED_URL = f'https://www.archlinux.org/feeds/packages/{platform.machine()}/'
 
-ALL_REPOSITORIES = (
-    'Core', 'Extra', 'Testing',
-    'Community', 'Community-Testing',
-    'Multilib', 'Multilib-Testing',
-)
-
 
 def get_repos(config_path='/etc/pacman.conf'):
     """Reads the Pacman configuration file to get the official repos enabled.
@@ -27,7 +21,14 @@ def get_repos(config_path='/etc/pacman.conf'):
     config = configparser.ConfigParser(allow_no_value=True)
     config.read(config_path)
     sections = config.sections()
-    return tuple(r for r in ALL_REPOSITORIES if r.lower() in sections)
+    return tuple(
+        section.title() for section in sections
+        if _is_official_repo(config, section)
+    )
+
+def _is_official_repo(config, section):
+    include = config.get(section, 'Include', fallback=None)
+    return include == '/etc/pacman.d/mirrorlist'
 
 def parse(handler):
     """Download packages feed and pass packages to the given handler.

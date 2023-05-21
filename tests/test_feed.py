@@ -22,7 +22,7 @@ class TestHandler(object):
 class GetReposTest(unittest.TestCase):
     def test_get_repos(self):
         repos = feed.get_repos(path.dirname(__file__) + '/fixtures/pacman.conf')
-        self.assertEqual(repos, ('Core', 'Extra'))
+        self.assertEqual(repos, ('Core', 'Extra', 'Extra-Testing'))
 
 
 class ParseTest(unittest.TestCase):
