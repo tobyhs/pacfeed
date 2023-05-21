@@ -83,8 +83,8 @@ class OutputHandlerTest(unittest.TestCase):
         self.handler.handle(self.package, self.pub_date)
         self.local_package_set.get.assert_called_once_with(self.package.name)
 
-        format_args = (self.package.name, self.package.version, self.pub_date)
-        regex = '{}.*{}.*{}'.format(*(re.escape(s) for s in format_args))
+        fields = (self.package.name, self.package.version, self.pub_date)
+        regex = '.*'.join((re.escape(f) for f in fields))
         output = self.output.getvalue()
 
         self.assertTrue(output.startswith(prefix))

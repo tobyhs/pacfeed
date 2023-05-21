@@ -19,9 +19,10 @@ class Package(object):
 
     def __repr__(self):
         class_ = self.__class__
-        return '<%s.%s %s version=%s>' % (
-            class_.__module__, class_.__qualname__, self.name, self.version
-        )
+        return ' '.join((
+            f'<{class_.__module__}.{class_.__qualname__}',
+            f'{self.name} version={self.version}>'
+        ))
 
 
 class LocalPackageSet(object):

@@ -7,7 +7,7 @@ import xml.etree.ElementTree
 from pacfeed import pacman
 
 
-FEED_URL = 'https://www.archlinux.org/feeds/packages/%s/' % platform.machine()
+FEED_URL = f'https://www.archlinux.org/feeds/packages/{platform.machine()}/'
 
 ALL_REPOSITORIES = (
     'Core', 'Extra', 'Testing',
@@ -74,5 +74,5 @@ class OutputHandler(object):
         elif local_package:
             self.output.write('\033[91m') # Red
 
-        self.output.write('{}\033[30G {}'.format(package.name, package.version))
-        self.output.write('\033[45G {}\033[0m\n'.format(pub_date))
+        self.output.write(f'{package.name}\033[30G {package.version}')
+        self.output.write(f'\033[45G {pub_date}\033[0m\n')
