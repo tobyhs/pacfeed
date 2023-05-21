@@ -14,3 +14,10 @@ python-stevedore              1.17.1-1       Mon, 29 Aug 2016 06:28:55 +0000
 xdotool                       3.20160805.1-1 Mon, 29 Aug 2016 06:11:49 +0000
 gaupol                        0.92-1         Mon, 29 Aug 2016 05:54:47 +0000
 ```
+
+## Tests
+
+To run the unit tests, run the following:
+```sh
+python -m unittest
+```
